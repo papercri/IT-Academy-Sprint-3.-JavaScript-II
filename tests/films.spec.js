@@ -293,10 +293,50 @@ describe('Function "orderByYear"', () => {
 // Exercise 6
 // YOUR CODE HERE. Test moviesAverageByCategory()
 describe('Function "moviesAverageByCategory"', () => {
-  it('ADD YOUR CODE IN films.spec.js file', () => {
-    expect(typeof hoursToMinutes).toBe('coffee');
+  it('should be declared', () => {
+    expect(typeof moviesAverageByCategory).toBe('function');
   });
+
+  it('should return a number', () => {
+    expect(typeof moviesAverageByCategory(movies, 'Drama')).toBe('number');
+  });
+
+  it('should be different from NaN', () => {
+    expect(moviesAverageByCategory(movies, 'Drama')).not.toBeNaN();
+  });
+
+  it('should return the average score of movies selecting only the genre', () => {
+    expect(moviesAverageByCategory([
+      {
+        title: 'Movie1',
+        year: 2000,
+        director: 'Director1',
+        duration: '1h 30min',
+        genre: ['Drama'],
+        score: 8.5
+      },
+      {
+        title: 'Movie2',
+        year: 2005,
+        director: 'Director2',
+        duration: '2h 00min',
+        genre: ['Drama'],
+        score: 8.8
+      },
+      {
+        title: 'Movie3',
+        year: 2010,
+        director: 'Director3',
+        duration: '1h 45min',
+        genre: ['Drama', 'Action'],
+        score: 8.7
+      }
+    ], 'Drama')).toBe(8.67);
+  });
+
+
 });
+
 
 // Exercise 7
 describe('Function "hoursToMinutes"', () => {
